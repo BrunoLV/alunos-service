@@ -1,0 +1,27 @@
+spring:
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/bd_alunos
+    username: root
+    password: root
+    hikari:
+      pool-name: alunosPoolCP
+      minimum-idle: 5
+      maximum-pool-size: 20
+      
+  liquibase:
+    check-change-log-location: true
+    enabled: true
+    change-log: classpath:db/db.changelog-master.xml
+    
+  jpa:
+    generate-ddl: false
+    show-sql: false
+
+logging:
+  file: /home/bruno/logs/alunos-service.log
+  level:
+    root: WARN
+    com.valhala: DEBUG
+

@@ -18,10 +18,3 @@ spring:
   jpa:
     generate-ddl: false
     show-sql: false
-
-logging:
-  file: /home/bruno/logs/alunos-service.log
-  level:
-    root: WARN
-    com.valhala: DEBUG
-

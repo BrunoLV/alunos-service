@@ -1,10 +1,11 @@
 package com.valhala.universidade.alunos.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.valhala.universidade.alunos.jpa.listeners.AlunoPersistListener;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,12 +19,17 @@ public class Aluno implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
     private String uuid;
+
+    @NotBlank(message = "Nome é obrigatório.")
+    @Size(message = "Nome deve ser informado com no máximo 2 caracteres.", min = 2)
     private String nome;
+
+    @NotBlank(message = "Documento é obrigatório")
     private String documento;
+
     private Long matricula;
 
     @Temporal(TemporalType.DATE)

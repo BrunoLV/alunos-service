@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="DEV_HOME" value="/home/bruno/logs"/>
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
@@ -13,7 +11,7 @@
 
     <appender name="FILE-AUDIT"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${DEV_HOME}/alunos-service.log</file>
+        <file>${LOG_DIR}/alunos-service.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 %d{yyyy-MM-dd HH:mm:ss} - %msg%n
@@ -22,7 +20,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${DEV_HOME}/arquivo/alunos-service.%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOG_DIR}/arquivo/alunos-service.%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -34,7 +32,7 @@
 
     <appender name="FILE-ERROR"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${DEV_HOME}/alunos-service-error.log</file>
+        <file>${LOG_DIR}/alunos-service-error.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 %d{yyyy-MM-dd HH:mm:ss} - %msg%n
@@ -43,7 +41,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${DEV_HOME}/arquivo/alunos-service-error.%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOG_DIR}/arquivo/alunos-service-error.%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -62,6 +60,7 @@
 
     <root level="error">
         <appender-ref ref="FILE-ERROR"/>
+        <appender-ref ref="STDOUT"/>s
     </root>
 
 </configuration>
